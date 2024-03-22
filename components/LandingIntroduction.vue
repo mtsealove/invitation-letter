@@ -27,27 +27,27 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16.8rem;
+  padding-top: 52px;
 }
 
 .date {
-  font-size: 6.7rem;
-  line-height: 9.4rem;
+  font-size: 21px;
+  line-height: 28px;
 }
 
 .happily {
-  font-size: 8.7rem;
-  line-height: 9.7rem;
+  font-size: 28px;
+  line-height: 31px;
 }
 
 .introduction-img {
   width: 100%;
-  margin: 8.6rem 0 12.3rem;
+  margin: 28px 0 40px;
   object-fit: contain;
 }
 
 .title {
-  font-size: 9.4rem;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,15 +55,14 @@ export default {
 }
 
 .title span {
-  margin-top: 3.1rem;
-  font-size: 5.5rem;
-
+  margin-top: 8px;
+  font-size: 18px;
 }
 
 .location {
-  margin-top: 6.6rem;
-  font-size: 4.7rem;
-  line-height: 6.1rem;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 20px;
   color: rgba(0, 0, 0, 0.4);
   text-align: center;
 }

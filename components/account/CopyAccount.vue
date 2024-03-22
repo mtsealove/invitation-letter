@@ -48,6 +48,8 @@ export default {
   flex: 1;
   text-align: left;
   white-space: nowrap;
+  text-decoration: none;
+  color: black;
   @media (max-width: 375px) {
     //text-align: right;
   }

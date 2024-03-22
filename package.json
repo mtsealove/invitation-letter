@@ -12,11 +12,16 @@
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.2",
+    "aos": "^2.3.4",
+    "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "nuxt": "^3.10.3",
     "redux": "^5.0.1",
     "vue": "^3.4.19",
     "vue-plugin-load-script": "^2.1.1",
     "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
   }
 }

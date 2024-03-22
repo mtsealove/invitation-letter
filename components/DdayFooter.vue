@@ -1,5 +1,6 @@
 <script lang="ts">
 import dayjs from "dayjs";
+import axios from "axios";
 let name: string = '';
 let message: string = '';
 let engage: number = -1;
@@ -13,6 +14,32 @@ export default {
       message,
       engage
     }
+  },
+  methods: {
+    add() {
+      if(!this.name) {
+        window.alert('이름을 입력해주세요.');
+        return;
+      }
+      if(!this.message) {
+        window.alert('메세지를 입력해주세요.');
+        return;
+      }
+      if(this.engage===-1) {
+        window.alert('참석 여부를 선택해주세요.');
+        return;
+      }
+      axios.post('/api/engage', {
+        name: this.name,
+        message: this.message,
+        engage: this.engage,
+      }).then((res)=>{
+        console.log(res);
+        window.alert('메세지를 남겼습니다.');
+      }).catch(()=>{
+        window.alert('오류가 발생하였습니다.');
+      })
+    }
   }
 }
 </script>
@@ -20,7 +47,12 @@ export default {
 <template>
   <BackgroundDivider text="“ 무엇보다도 뜨겁게 서로 사랑할지니<br>사랑은 허다한 죄를 덮느니라 ”"
                      :is-small="true" />
-  <section class="container">
+  <section class="container"
+           data-aos="fade-up"
+           data-aos-offset="200"
+           data-aos-easing="ease-out-cubic"
+           data-aos-duration="1300"
+  >
     <h6 class="dday">결혼식까지 앞으로<br/>
       {{dday}} 일.</h6>
     <p class="message">축하메세지와 참석 의사를 남겨주세요!</p>
@@ -34,7 +66,8 @@ export default {
       <option value="1">참석</option>
       <option value="0">불참</option>
     </select>
-    <button class="button">
+    <button class="button"
+            @click="add" >
       축하메세지 남기기
     </button>
   </section>
@@ -49,35 +82,38 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 7.6rem;
+  padding: 0 24px;
 }
 .dday {
-  margin: 16.3rem 0 3.2rem;
-  font-size: 8rem;
-  line-height: 9.1rem;
+  margin: 52px 0 10px;
+  font-size: 25px;
+  line-height: 28px;
   font-weight: 400;
   text-align: center;
 }
 
 .message {
-  font-size: 4.4rem;
-  line-height: 7.7rem;
-  margin-bottom: 13.2rem;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 40px;
 }
 
 .input {
-  font-size: 6rem;
+  font-size: 20px;
   width: 100%;
   border: 0.5px solid black;
   line-height: 1;
-  padding: 2.4rem 5rem ;
+  padding: 8px 16px;
   box-sizing: border-box;
-  margin-bottom: 6rem;
+  margin-bottom: 20px;
+  border-radius: 0;
+  background-color: white;
+  color: black;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  min-height: 13.8rem;
+  min-height: 42px;
 }
 
 .input::placeholder {
@@ -93,10 +129,10 @@ export default {
 }
 
 .button {
-  font-size: 6rem;
+  font-size: 18px;
   background: black;
   color: white;
-  padding: 4rem 0;
+  padding: 12px 0;
   border: none;
   width: 100%;
   margin-top: 1.5rem;
@@ -104,16 +140,16 @@ export default {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.06);
-  padding: 10.8rem 0 12rem;
-  margin-top: 25.3rem;
+  padding: 32px 0 40px;
+  margin-top: 80px
 }
 
 .footer p {
-  font-size: 4.9rem;
+  font-size: 15px;
   text-align: center;
 }
 
 .footer p:nth-last-of-type(1) {
-  margin-top: 1.5rem;
+  margin-top: 6px;
 }
 </style>

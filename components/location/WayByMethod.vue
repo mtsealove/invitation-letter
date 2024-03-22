@@ -22,24 +22,29 @@ export default {
 <style scoped>
 .way {
   width: 100%;
-  max-width: calc(100% - 27rem);
-  margin-top: 10.2rem;
+  max-width: calc(100% - 72px);
+  margin-top: 32px;
 }
 
 .title {
-  font-size: 7.2rem;
+  font-size: 22px;
   font-weight: 400;
-  line-height: 10.5rem;
+  line-height: 34px;
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: .7px;
   text-underline-offset: 7px;
+  margin-bottom: 4px;
 }
 
 .contents {
-  font-size: 4.8rem;
-  line-height: 6.3rem;
+  font-size: 15px;
+  line-height: 20px;
   list-style: '∙';
-  padding-left: 2rem;
+  padding-left: 6px;
   word-break: keep-all;
+}
+
+.contents li:nth-last-of-type(n + 2) {
+  margin-bottom: 4px;
 }
 </style>

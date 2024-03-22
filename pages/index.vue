@@ -9,11 +9,22 @@
     <CircleDivider/>
     <SendAccount/>
     <DdayFooter/>
-    <br/><br/>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+useSeoMeta({
+  title:"김은택 & 정윤영 결혼식에 초대합니다",
+  ogTitle: '김은택 & 정윤영 결혼식에 초대합니다',
+  description:"김은택 & 정윤영 결혼식에 초대합니다",
+  ogDescription: '김은택 & 정윤영 결혼식에 초대합니다',
+  ogImage: 'https://example.com/image.png',
+  twitterCard: 'summary_large_image',
+  formatDetection: 'telephone=no'
+})
+</script>
+
+<script lang="ts">
 import LandingIntroduction from "../components/LandingIntroduction.vue";
 import VibleMent from "../components/VibleMent.vue";
 import WeddingLocation from "../components/WeddingLocation.vue";
@@ -26,15 +37,29 @@ import DdayFooter from "~/components/DdayFooter.vue";
 
 export default {
   name: "index",
-  head() {
-    return {
-      title: '테스트',
-    }
+  mounted() {
+    this.loadScript();
   },
   components: {
     DdayFooter,
     PhotoGallery,
     WhoAmI, SendAccount, PersonContact, CircleDivider, WeddingLocation, VibleMent, LandingIntroduction},
+  methods: {
+    handleOnLoad() {
+      //@ts-ignore
+      AOS.init();
+    },
+    loadScript() {
+      const style = document.createElement('link');
+      style.href  = 'https://unpkg.com/aos@2.3.1/dist/aos.css';
+      style.rel = 'stylesheet';
+      document.head.appendChild(style);
+      const script =  document.createElement('script');
+      script.src = `https://unpkg.com/aos@2.3.1/dist/aos.js`;
+      script.onload = this.handleOnLoad;
+      document.head.appendChild(script);
+    },
+  }
 }
 </script>
 

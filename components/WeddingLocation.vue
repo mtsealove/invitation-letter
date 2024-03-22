@@ -1,5 +1,9 @@
 <template>
-<section class="container">
+<section class="container"
+         data-aos="fade-up"
+         data-aos-offset="200"
+         data-aos-easing="ease-out-cubic"
+         data-aos-duration="1300" >
   <h3 class="title">결혼식 오시는 길</h3>
   <div class="location">
     서울특별시 서대문구 연세로 50<br/>
@@ -87,34 +91,35 @@ export default {
 
 <style scoped>
 .container {
-  padding: 17.8rem 0 22.5rem;
+  padding: 56px 0 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .title {
-  font-size: 8rem;
+  font-size: 24px;
   font-weight: 400;
-  margin-bottom: 12rem;
+  margin-bottom: 40px;
 }
 
 .location {
   border: 0.5px solid;
-  width: calc(100% - 15.2rem);
-  padding: 3rem 0;
-  font-size: 4.2rem;
+  width: calc(100% - 48px);
+  padding: 10px 0;
+  font-size: 13px;
   text-align: center;
-  line-height: 8.2rem;
+  line-height: 26px;
 }
 
 .location em {
-  font-size: 6.4rem;
+  font-size: 20px;
+  font-style: normal;
 }
 
 .map {
   width: 100%;
   aspect-ratio: calc(5 / 3);
-  margin-top: 12.8rem;
+  margin-top: 40px;
 }
 </style>

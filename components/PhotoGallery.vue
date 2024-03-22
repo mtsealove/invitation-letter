@@ -18,7 +18,10 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section data-aos="fade-up"
+           data-aos-offset="200"
+           data-aos-easing="ease-out-cubic"
+           data-aos-duration="1300">
     <h3 class="title">결혼 사진</h3>
     <div class="content">
       <article class="grid">
@@ -54,10 +57,10 @@ section {
 }
 
 .more {
-  font-size: 6rem;
-  padding: 3rem;
+  font-size: 18px;
+  padding: 10px;
   background: white;
-  border: 0.5px solid black;
+  border: .5px solid black;
   color: black;
   cursor: pointer;
   width: 100%;
@@ -65,7 +68,7 @@ section {
 }
 
 .grid {
-  grid-gap: 5rem;
+  grid-gap: 14px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -73,5 +76,6 @@ section {
 .grid img {
   width: 100%;
   aspect-ratio: 1;
+  object-fit: cover;
 }
 </style>
