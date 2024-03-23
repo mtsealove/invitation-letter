@@ -18,8 +18,10 @@ useSeoMeta({
   ogTitle: '김은택 & 정윤영 결혼식에 초대합니다',
   description:"김은택 & 정윤영 결혼식에 초대합니다",
   ogDescription: '김은택 & 정윤영 결혼식에 초대합니다',
-  ogImage: 'https://example.com/image.png',
-  twitterCard: 'summary_large_image',
+  ogUrl: 'https://invitation-letter-green.vercel.app',
+  ogSiteName: '김은택 & 정윤영 결혼식에 초대합니다',
+  ogType: 'website',
+  ogImage: 'https://invitation-letter-green.vercel.app/introduction.png',
   formatDetection: 'telephone=no'
 })
 </script>
