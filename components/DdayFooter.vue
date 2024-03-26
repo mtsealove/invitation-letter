@@ -13,8 +13,11 @@ export default {
       name,
       message,
       engage,
-      shareEnable: window.navigator.share !== undefined,
+      shareEnable: false,
     }
+  },
+  mounted() {
+    this.shareEnable = window.navigator.share !== undefined;
   },
   methods: {
     add() {
@@ -42,11 +45,13 @@ export default {
       })
     },
     shareLink() {
-      window.navigator.share({
-        title: '김은택 & 정윤영 결혼식에 초대합니다',
-        text: '김은택 & 정윤영 결혼식에 초대합니다',
-        url: 'https://invitation-letter-green.vercel.app',
-      });
+      if(window.navigator.share) {
+        window.navigator.share({
+          title: '김은택 & 정윤영 결혼식에 초대합니다',
+          text: '김은택 & 정윤영 결혼식에 초대합니다',
+          url: 'https://invitation-letter-green.vercel.app',
+        });
+      }
     },
     copyLink() {
       window.navigator.clipboard.writeText('https://invitation-letter-green.vercel.app')
