@@ -9,10 +9,18 @@
     서울특별시 서대문구 연세로 50<br/>
     <em>연세대학교 동문회관</em>
   </div>
-  <div id="map" class="map"  />
+  <div class="map-wrapper">
+    <div id="map" class="map"  />
+    <div class="map-button"
+         @click="openMap" >
+
+    </div>
+  </div>
+
   <WayByMethod v-for="item in items"
                :title="item.title"
                :contents="item.contents"
+               :header="item.header"
                />
 </section>
 </template>
@@ -23,15 +31,17 @@ const [lat, lng] = [37.562741, 126.942480];
 let clientKey = '';
 const items = [
   {title: '지하철',
-  contents: ['2호선 이대역 4번 출구 -> 버스 742번, 7017번 -> 이대부중 하차',
-  '3호선 독립문역 4번 출구 -> 극동아파트 정류장 버스 470, 601, 750A, 750B, 7737번 -> 이대 후문 하차',
-  '3호선 경복궁역 1번 출구 -> 버스 272, 606 -> 이대부중 하차']},
+    header: '<2호선 또는 3호선 -> 이대 후문 또는 이대부중 하차>',
+  contents: [
+  '2호선 이대역 4번 출구 -> 버스 742, 7017',
+  '3호선 독립문역 4번 출구 -> 470, 601, 750A, 750B, 7737',
+  '3호선 경복궁역 1번 출구 -> 버스 272, 606']},
   {title: '버스',
   contents: [
       '간선 : 272, 470, 601, 606, 607, 672, 700, 707, 710, 750A, 750B, 742번',
-      '지선 : 6714, 7017, 7024, 7737번 (이대 후문 또는 이대부중 하차)',
-      '광역 : M7106, M7111, M7119, M7154 (이대 후문 하차)',
-      '직행 : G7111(이대 후문 하차)'
+      '지선 : 6714, 7017, 7024, 7737번',
+      '광역 : M7106, M7111, M7119, M7154',
+      '직행 : G7111'
   ]},
   {
     title: '자가용',
@@ -80,6 +90,10 @@ export default {
         map: map
       });
     }
+    ,openMap() {
+      window.open('https://map.naver.com/p/search/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90%20%EB%8F%99%EB%AC%B8%ED%9A%8C%EA%B4%80/place/1400823520?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp',
+      '_blank');
+    }
   },
   data(){
     return {
@@ -120,6 +134,20 @@ export default {
 .map {
   width: 100%;
   aspect-ratio: calc(5 / 3);
+}
+
+.map-wrapper {
+  width: 100%;
+  position: relative;
   margin-top: 40px;
+}
+
+.map-button {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
 }
 </style>

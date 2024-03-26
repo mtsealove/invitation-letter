@@ -1,9 +1,19 @@
-<script setup lang="ts">
+<script lang="ts">
 
+import SendCome from "~/components/SendCome.vue";
+export default {
+  name: 'WhoAmI',
+  components: [SendCome],
+  props: {
+    showModal: Function
+  }
+}
 </script>
 
 <template>
-  <section data-aos="fade-up"
+  <section class="container"
+           id="who-am-i"
+           data-aos="fade-up"
            data-aos-offset="400"
            data-aos-easing="ease-out-cubic"
            data-aos-duration="1300">
@@ -29,17 +39,17 @@
       부디 오셔서 저희를 축복해주세요!
     </article>
   </section>
-  <BackgroundDivider text="1 Peter 4:8"
-                     :is-small="false" />
+  <SendCome :show-modal="showModal"/>
 </template>
 
 <style scoped>
-section {
+.container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 21rem;
+  scroll-snap-align: start;
 }
 .who {
   font-size: 20px;

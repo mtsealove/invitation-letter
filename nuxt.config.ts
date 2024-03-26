@@ -5,11 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/styles/reset.css','~/assets/styles/fonts.css'],
   buildModules: [
-      '@nuxtjs/dotenv'
+      '@nuxtjs/dotenv',
   ],
     runtimeConfig: {
         public: {
-            naverClient: process.env.NAVER_MAP_CLIENT
+            naverClient: process.env.NAVER_MAP_CLIENT,
+            supabaseUrl: process.env.SUPABASE_URL,
+            supabaseKey: process.env.SUPABASE_KEY,
         }
     }
 })

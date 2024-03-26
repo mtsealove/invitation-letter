@@ -10,7 +10,7 @@ export default {
       window.navigator.clipboard.writeText(this.account)
           .then(()=>{
             window.alert('계좌번호가 복사되었습니다.');
-          })
+          });
     }
   }
 }

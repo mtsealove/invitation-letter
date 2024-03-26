@@ -30,10 +30,11 @@ export default {
              :key="idx"
              alt="결혼사진" />
       </article>
-      <button class="more"
-              @click="showMore()" >
-        + 더 보기
-      </button>
+      <nuxt-link href="/gallery">
+        <button class="more">
+          사진 더 보기
+        </button>
+      </nuxt-link>
     </div>
   </section>
 </template>
@@ -41,7 +42,7 @@ export default {
 <style scoped>
 section {
   padding-top: 14rem;
-  padding-bottom: 17.6rem;
+  padding-bottom: 48px;
 }
 
 .title {

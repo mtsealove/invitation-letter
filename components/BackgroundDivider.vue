@@ -9,12 +9,7 @@ export default {
 </script>
 
 <template>
-  <div class="peter"
-       data-aos="fade-up"
-       data-aos-offset="10"
-       data-aos-easing="ease-out-cubic"
-       data-aos-duration="1300"
-  >
+  <div class="peter">
     <img src="/plz.png"
          alt="peter4">
     <span v-html="text" :class="isSmall?'small':''">

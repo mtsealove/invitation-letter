@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="divider-container">
   <div class="line" />
   <div class="circle" />
   <div class="line" />
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.divider-container {
   display: flex;
   align-items: center;
   width: 100%;

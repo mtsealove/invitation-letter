@@ -47,3 +47,12 @@ table {
 :root {
     font-size: 3.174px;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.snap {
+    /*scroll-snap-stop: always;*/
+    /*scroll-snap-type: y mandatory;*/
+}
