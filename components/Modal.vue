@@ -37,19 +37,23 @@ export default {
 <template>
   <div :class="['modal', hide&&'hide', none&&'none']">
     <div class="modal-contents">
+<!--
       <h6 class="title">
         참석 의사 전달
-      </h6>
-      <button class="close"
-              @click="closeModal" >
-        x
-      </button>
+      </h6>-->
+      <div class="close-container">
+        <button class="close"
+                @click="closeModal" >
+          x
+        </button>
+      </div>
       <slot></slot>
+<!--
       <button @click="dontShow"
               v-if="init"
               class="dont" >
         오늘 하루 보지 않기
-      </button>
+      </button>-->
     </div>
   </div>
 
@@ -83,7 +87,7 @@ export default {
   width: calc(100% - 40px);
   position: relative;
   background-color: #EBEBEB;
-  padding: 40px 10px 20px;
+  padding: 12px 28px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,15 +108,18 @@ export default {
   font-weight: 400;
 }
 
+.close-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .close {
-  position: absolute;
-  right: 12px;
-  top: 10px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 28px;
   padding: 0;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border: none;
   background-color: transparent;
   color: black;

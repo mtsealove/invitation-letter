@@ -1,19 +1,29 @@
 <template>
-  <div class="container">
-    <LandingIntroduction/>
-    <VibleMent/>
-    <WhoAmI :show-modal="showComeModal"/>
-    <PhotoGallery/>
-<!--    <PersonContact/>-->
-    <WeddingLocation/>
-    <CircleDivider/>
-    <SendAccount/>
-    <DdayFooter/>
+
+  <div class="container"
+       @click="scrollDown" >
+    <div class="main-contents">
+      <WhoAmI :show-modal="showComeModal"/>
+      <PhotoGallery/>
+      <WeddingLocation/>
+      <CircleDivider/>
+      <SendAccount/>
+      <DdayFooter/>
+    </div>
+  </div>
+  <div style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;">
+    <div class="container">
+      <LandingIntroduction/>
+    </div>
   </div>
   <Modal ref="modal"
          :init="!showForm">
     <div class="modal-wrapper"
          v-if="!showForm">
+      <p class="modal-content-1">결혼식에 참석해주시는<br/>
+        모든 분들을 귀하게 모실 수 있도록<br/>
+        참석 의사를 말씀해주세요.</p>
+<!--
       <p class="modal-content-1">결혼식에 참석해주시는<br/>
         모든 분들을 귀하게 모실 수 있도록<br/>
         참석 의사를 말씀해주세요.</p>
@@ -23,6 +33,7 @@
         2024년 6월 8일 토요일 오후 1시<br/>
         연세대학교 동문회관 3층 그랜드볼룸
       </p>
+      -->
       <button class="modal-btn"
               @click="showForm = true;">
         참석 의사 전달하기
@@ -33,10 +44,11 @@
       <SendForm :close-modal="closeModal"/>
     </div>
   </Modal>
+<!--
   <Modal ref="modalRef"
          :dont-show="false">
     <SendForm :close-modal="closeModal"/>
-  </Modal>
+  </Modal>-->
 </template>
 
 <script setup lang="ts">
@@ -99,9 +111,6 @@ export default {
 
      */
 
-    if(!Cookie.get('modal')) {
-      this.$refs.modal.showModal();
-    }
   },
   components: {
     DdayFooter,
@@ -123,11 +132,22 @@ export default {
       document.head.appendChild(script);
     },
     showComeModal() {
-      this.$refs.modalRef.showModal();
+      // this.$refs.modalRef.showModal();
+      this.$refs.modal.showModal();
     },
     closeModal() {
       this.$refs.modalRef.closeModal();
       this.$refs.modal.closeModal();
+    },
+    scrollDown() {
+      console.log('test');
+      const element = document.querySelector<HTMLDivElement>('.main-contents');
+      const {scrollY} = window;
+      console.log(scrollY);
+      if(element && element.offsetTop>scrollY) {
+
+        window.scrollTo({top: element.offsetTop, behavior: 'smooth'});
+      }
     }
   },
   data() {
@@ -143,15 +163,16 @@ export default {
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
-  background-color: white;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 .modal-content-1 {
-  font-size: 13px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 24px;
   text-align: center;
-  margin-top: 18px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .modal-content-2 {
@@ -179,4 +200,17 @@ export default {
   align-items: center;
 }
 
+.main-contents {
+  width: 100%;
+  background-color: white;
+}
+
+.clear-fix {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
 </style>

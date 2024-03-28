@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   buildModules: [
       '@nuxtjs/dotenv',
   ],
+    plugins: [
+        {src: '~/plugins/vue-slick-carousel.js', ssr: false}
+    ],
     runtimeConfig: {
         public: {
             naverClient: process.env.NAVER_MAP_CLIENT,

@@ -1,5 +1,6 @@
 <script lang="ts">
 import dayjs from "dayjs";
+import Cookie from "js-cookie";
 
 export default {
   name: 'SendCome',
@@ -8,6 +9,7 @@ export default {
       day: 0,
       hour: 0,
       min: 0,
+      once: true,
     }
   },
   props: {
@@ -24,6 +26,19 @@ export default {
   mounted() {
     this.updateTime();
     setInterval(this.updateTime, 1000);
+    const element = document.querySelector('#modal-start');
+    if(element) {
+      const io = new IntersectionObserver((entries, observer)=>{
+        entries.forEach((entry)=>{
+          console.log(entry.intersectionRatio);
+          if(!Cookie.get('modal') && entry.intersectionRatio>=0.5 && this.once) {
+            this.showModal();
+            this.once = false;
+          }
+        })
+      }, {threshold: 0.5});
+      io.observe(element);
+    }
   }
 }
 </script>
@@ -31,7 +46,7 @@ export default {
 <template>
   <section class="come"
            data-aos="fade-up"
-           data-aos-offset="400"
+           data-aos-offset="100"
            data-aos-easing="ease-out-cubic"
            data-aos-duration="1300" >
     <div class="date">
@@ -50,7 +65,8 @@ export default {
         <span>분</span>
       </div>
     </div>
-    <p class="left">
+    <p class="left"
+       id="modal-start" >
       은택 & 윤영의 결혼식이<br/>
       {{day}}일 남았습니다.
     </p>
@@ -64,12 +80,12 @@ export default {
 
 <style scoped>
 .come {
-  background-color: #E7E9E8;
+  background-color: #F0F0F0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 20px 48px;
+  padding: 32px 20px 30px;
   margin-top: 54px;
 }
 
@@ -90,17 +106,17 @@ export default {
   width: 66px;
   height: 106px;
   justify-content: center;
-  row-gap: 18px;
+  row-gap: 15px;
 }
 .date-item span {
   font-size: 24px;
 }
 
 .left {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 28px;
   text-align: center;
-  margin: 36px 0 20px;
+  margin: 22px 0 16px;
 }
 
 .btn {

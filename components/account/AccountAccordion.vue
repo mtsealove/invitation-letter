@@ -40,38 +40,34 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="header"
-       data-aos="fade-up"
-       data-aos-offset="200"
-       data-aos-easing="ease-out-cubic"
-       data-aos-duration="1300">
-    <button class="side"
-            @click="toggle"
-            @mouseenter="onMouseOver"
-            @mouseleave="this.label = `${this.type} 측 계좌번호`;" >
-      {{label}}
-    </button>
-  </div>
-  <div :id="`bank-account-${id}`"
-       class="article-wrapper">
-    <p class="copy">텍스트를 눌러서 복사할 수 있어요.</p>
-    <article class="article"
-             data-aos="fade-up"
-             data-aos-offset="200"
-             data-aos-easing="ease-out-cubic"
-             data-aos-duration="1300" >
-      <CopyAccount :who="type"
-                   :account="account1" />
-      <CopyAccount who="아버지"
-                   :account="account2" />
-      <CopyAccount who="어머니"
-                   :account="account3 " />
-    </article>
+  <div class="top">
+    <div class="header">
+      <div class="side"
+              @click="toggle"
+              @mouseenter="onMouseOver"
+              @mouseleave="this.label = `${this.type} 측 계좌번호`;" >
+        {{label}}
+      </div>
+    </div>
+    <div :id="`bank-account-${id}`"
+         class="article-wrapper">
+      <p class="copy">텍스트를 눌러서 복사할 수 있어요.</p>
+      <article class="account-article">
+        <CopyAccount :who="type"
+                     :account="account1" />
+        <CopyAccount who="아버지"
+                     :account="account2" />
+        <CopyAccount who="어머니"
+                     :account="account3 " />
+      </article>
+    </div>
   </div>
 
 </template>
 
 <style scoped>
+.top {
+}
 .copy {
   margin-top: 21px;
   font-size: 15px;
@@ -80,26 +76,31 @@ export default defineComponent({
   margin-bottom: 6px;
 }
 
-.article {
-  padding: 18px 20px;
+.account-article {
+  padding: 12px 16px;
+  box-sizing: border-box;
   background-color: #D9D9D9;
   width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 18px;
-  margin-bottom: 2rem;
+  align-items: center;
+  //margin-bottom: 2rem
 }
 
 .article-wrapper {
   transition: max-height 350ms ease-in-out;
   overflow: hidden;
   max-height: 0;
+  width: 100%;
 }
 
 .side {
   font-size: 19px;
-  text-align: center;
-  padding: 10px 0;
+  line-height: 31px;
+  padding: 6px 14px;
+  text-align: left;
   border: 0.5px solid black;
   width: 100%;
   background-color: white;
@@ -112,7 +113,7 @@ export default defineComponent({
 }
 
 .header {
-
+  width: 100%;
 }
 
 .header:nth-of-type(3) {

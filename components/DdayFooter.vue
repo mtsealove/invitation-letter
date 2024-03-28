@@ -159,6 +159,7 @@ export default {
 .footer p {
   font-size: 15px;
   text-align: center;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .footer p:nth-last-of-type(1) {
@@ -169,12 +170,12 @@ export default {
   display: flex;
   flex-direction: column;
   row-gap: 12px;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 
 .btn {
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   column-gap: 8px;

@@ -18,31 +18,39 @@ export default {
 </script>
 
 <template>
-  <section data-aos="fade-up"
-           data-aos-offset="200"
-           data-aos-easing="ease-out-cubic"
-           data-aos-duration="1300">
-    <h3 class="title">결혼 사진</h3>
-    <div class="content">
-      <article class="grid">
-        <img v-for="(photo, idx) in photos"
-             :src="photo"
-             :key="idx"
-             alt="결혼사진" />
-      </article>
-      <nuxt-link href="/gallery">
-        <button class="more">
-          사진 더 보기
-        </button>
-      </nuxt-link>
+  <section style="background-color: white">
+    <div data-aos="fade-up"
+         data-aos-offset="200"
+         data-aos-easing="ease-out-cubic"
+         class="container"
+         data-aos-duration="1300">
+      <h3 class="title">결혼 사진</h3>
+      <div class="content">
+        <article class="grid">
+          <img v-for="(photo, idx) in photos"
+               :src="photo"
+               :key="idx"
+               alt="결혼사진" />
+        </article>
+        <nuxt-link href="/gallery">
+          <button class="more">
+            사진 더 보기
+          </button>
+        </nuxt-link>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
 section {
+  background-color: white;
+}
+
+.container {
   padding-top: 14rem;
   padding-bottom: 48px;
+  background-color: white;
 }
 
 .title {

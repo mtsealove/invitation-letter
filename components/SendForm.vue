@@ -1,5 +1,6 @@
 <script lang="ts">
 import { createClient } from '@supabase/supabase-js';
+import Cookie from "js-cookie";
 enum FOOD {
   SCHEDULE = '예정',
   NONE = '안함',
@@ -64,6 +65,9 @@ export default {
         this.meal = FOOD.SCHEDULE;
         this.closeModal();
         window.alert('전달되었습니다.');
+        Cookie.set('modal', 'true', {
+          expires: 1,
+        });
       }
     }
   }
@@ -136,7 +140,8 @@ export default {
 <style scoped>
 
 .form-container {
-  width: calc(100% - 36px);
+  //width: calc(100% - 36px);
+  width: 100%;
 }
 .grid {
   display: grid;
@@ -190,12 +195,11 @@ export default {
 .send-btn {
   font-size: 18px;
   width: 100%;
-  margin-top: 36px;
+  margin-top: 26px;
   background-color: rgba(0, 0, 0, 0.58);
   color: white;
   border: none;
   padding: 12px 0;
-  margin-bottom: 16px;
   cursor: pointer;
 }
 </style>

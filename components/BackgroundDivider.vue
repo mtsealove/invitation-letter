@@ -24,7 +24,6 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 60px;
 }
 
 .peter img {
@@ -33,13 +32,14 @@ export default {
 
 .peter span {
   position: absolute;
-  font-size: 22px;
+  font-size: 18px;
+  line-height: 24px;
   color: white;
   text-align: center;
 }
 
 .small {
   font-size: 18px !important;
-  line-height: 1.3 !important;
+  line-height: 24px !important;
 }
 </style>
