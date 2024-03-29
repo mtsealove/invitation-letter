@@ -161,6 +161,14 @@ export default {
   padding: 6px 8px;
   border: .5px solid black;
   border-radius: 0;
+  width: calc(100% - 16px);
+  //max-width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .grid input::placeholder {
   color: rgba(0, 0, 0, 0.8);

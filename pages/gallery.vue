@@ -94,14 +94,14 @@ const allImgs = [{
   },
 ];
 
-let imgs = allImgs.filter((i)=>i.category===Category.STUDIO)
-    .map((n)=>n.img);
+const imgs = ref(allImgs.filter((i)=>i.category===Category.STUDIO)
+    .map((n)=>n.img));
 let currentCategory =  Category.STUDIO;
 const modules = [Navigation, Pagination];
 
 const changeCategory = (category: Category) => {
   currentCategory = category;
-  imgs = allImgs.filter((i)=>i.category===currentCategory)
+  imgs.value = allImgs.filter((i)=>i.category===currentCategory)
       .map((i)=>i.img);
 };
 
@@ -191,11 +191,6 @@ const slidePrev = () => {
            e.preventDefault();
            e.stopPropagation();
          }" >
-      <div class="close">
-        <button @click="hideModal">
-          X
-        </button>
-      </div>
       <div class="swiper-wrapper">
         <img src="../assets/imgs/ic_back.png"
              @click="slidePrev"
@@ -294,7 +289,9 @@ const slidePrev = () => {
   background-color: white;
   max-width: 400px;
   width: calc(100% - 40px);
-  padding: 12px 16px 24px;
+  //padding: 12px 16px 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {

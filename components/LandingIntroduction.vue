@@ -59,7 +59,6 @@ export default {
       this.imgLoad = true;
     }, 650);
     const imgs = document.querySelectorAll<HTMLImageElement>('.introduction-img');
-    console.log(imgs);
     let current = 0;
     let next = 1;
     const interval = setInterval(()=>{

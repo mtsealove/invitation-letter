@@ -12,7 +12,7 @@ export default {
       const element = document.querySelector<HTMLDivElement>('.main-contents');
       const {scrollY} = window;
       if(element) {
-        element.style.opacity = `${(scrollY+100)/element.offsetTop}`;
+        element.style.opacity = `${(scrollY*1.25)/element.offsetTop}`;
       }
     };
     const onReSize = () => {

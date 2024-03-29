@@ -30,7 +30,6 @@ export default {
     if(element) {
       const io = new IntersectionObserver((entries, observer)=>{
         entries.forEach((entry)=>{
-          console.log(entry.intersectionRatio);
           if(!Cookie.get('modal') && entry.intersectionRatio>=0.5 && this.once) {
             this.showModal();
             this.once = false;
