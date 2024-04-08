@@ -2,6 +2,7 @@
 import {createClient} from "@supabase/supabase-js";
 import dayjs from "dayjs";
 let supabase = undefined;
+
 export default {
   setup(){
     const config = useRuntimeConfig();
@@ -14,18 +15,36 @@ export default {
   },
   data() {
     return {
-      data: []
+      data: [],
+      man: 0,
+      woman: 0,
+      total: 0,
+      mealEnable: 0,
+      mealNotEnable: 0,
+      mealUndetermined: 0
     }
   },
   methods: {
     dayjs,
     async getData() {
       const {data, error} = await supabase.from('memo')
-          .select();
+          .select()
+          .order('created_at', {ascending: false});
       if(error) {
         console.error(error);
       } else {
         this.data = data;
+        this.man = data.filter((d)=>d.friend === '신랑측')
+            .reduce((a, b)=>a+b.cnt, 0);
+        this.woman = data.filter((d)=>d.friend === '신부측')
+            .reduce((a, b)=>a+b.cnt, 0);
+        this.total = this.man + this.woman;
+        this.mealEnable = data.filter((d)=>d.meal==='예정')
+            .reduce((a,b)=>a+b.cnt, 0);
+        this.mealNotEnable = data.filter((d)=>d.meal==='안함')
+            .reduce((a,b)=>a+b.cnt, 0);
+        this.mealUndetermined = data.filter((d)=>d.meal==='미정')
+            .reduce((a,b)=>a+b.cnt, 0);
       }
     }
   },
@@ -35,6 +54,25 @@ export default {
 <template>
   <section class="container">
     <h1 class="title">참석 의사 확인</h1>
+    <article class="grid">
+      <div class="card">
+        <h6>참석 인원</h6>
+        <ul>
+          <li>전체: {{total}}</li>
+          <li>신랑측: {{man}}</li>
+          <li>신부측: {{woman}}</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h6>식사 여부</h6>
+        <ul>
+          <li>예정: {{mealEnable}}</li>
+          <li>미정: {{mealUndetermined}}</li>
+          <li>안함: {{mealNotEnable}}</li>
+        </ul>
+      </div>
+    </article>
+    <h2 class="subtitle">상세 정보</h2>
     <table class="table">
       <thead>
       <tr>
@@ -64,10 +102,40 @@ export default {
 </template>
 
 <style scoped>
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.card h6 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card ul li {
+  font-size: 14px;
+  line-height: 20px;
+}
 .title {
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 24px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 12px;
 }
 
 .container {

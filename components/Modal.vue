@@ -48,12 +48,11 @@ export default {
         </button>
       </div>
       <slot></slot>
-<!--
       <button @click="dontShow"
               v-if="init"
               class="dont" >
         오늘 하루 보지 않기
-      </button>-->
+      </button>
     </div>
   </div>
 
@@ -129,7 +128,7 @@ export default {
   font-size: 13px;
   background-color: transparent;
   border: none;
-  margin-top: 32px;
+  margin-top: 16px;
   color: black;
   cursor: pointer;
 }

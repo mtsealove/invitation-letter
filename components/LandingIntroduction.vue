@@ -21,10 +21,6 @@
         김은택 & 정윤영
         <span>결혼식에 초대합니다</span>
       </h1>
-      <p class="location">
-        2024년 6월 8일 토요일 오후 1시<br/>
-        연세대학교 동문회관 3층 그랜드볼룸
-      </p>
     </article>
   </section>
 </template>

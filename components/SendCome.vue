@@ -26,17 +26,19 @@ export default {
   mounted() {
     this.updateTime();
     setInterval(this.updateTime, 1000);
-    const element = document.querySelector('#modal-start');
-    if(element) {
-      const io = new IntersectionObserver((entries, observer)=>{
-        entries.forEach((entry)=>{
-          if(!Cookie.get('modal') && entry.intersectionRatio>=0.5 && this.once) {
-            this.showModal();
-            this.once = false;
-          }
-        })
-      }, {threshold: 0.5});
-      io.observe(element);
+    if(!Cookie.get('modal')) { // 오늘 하루 보지 않기 미선택 시
+      const element = document.querySelector('#modal-start');
+      if(element) {
+        const io = new IntersectionObserver((entries, observer)=>{
+          entries.forEach((entry)=>{
+            if(!Cookie.get('modal') && entry.intersectionRatio>=0.5 && this.once) {
+              this.showModal();
+              this.once = false;
+            }
+          })
+        }, {threshold: 0.5});
+        io.observe(element);
+      }
     }
   }
 }

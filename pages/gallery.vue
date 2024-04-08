@@ -17,7 +17,7 @@ useSeoMeta({
 });
 
 enum Category {
-  STUDIO,YONSEI, FRIENDS, SELF
+  STUDIO, YONSEI, FRIENDS, SELF
 }
 
 const allImgs = [{
@@ -37,38 +37,6 @@ const allImgs = [{
     img: '/gallery/img_3.png',
   },
   {
-    category: Category.STUDIO,
-    img: '/gallery/img.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_3.png',
-  },
-  {
     category: Category.YONSEI,
     img: '/gallery/img.png',
   },
@@ -86,23 +54,91 @@ const allImgs = [{
   },
   {
     category: Category.FRIENDS,
+    img: '/gallery/img.png',
+  },
+  {
+    category: Category.FRIENDS,
+    img: '/gallery/img_1.png',
+  },
+  {
+    category: Category.FRIENDS,
     img: '/gallery/img_2.png',
   },
   {
     category: Category.FRIENDS,
+    img: '/gallery/img_3.png',
+  },
+  {
+    category: Category.FRIENDS,
+    img: '/gallery/img.png',
+  },
+  {
+    category: Category.FRIENDS,
+    img: '/gallery/img_1.png',
+  },
+  {
+    category: Category.FRIENDS,
+    img: '/gallery/img_2.png',
+  },
+  {
+    category: Category.SELF,
+    img: '/gallery/img_3.png',
+  },
+  {
+    category: Category.SELF,
+    img: '/gallery/img_2.png',
+  },
+  {
+    category: Category.SELF,
+    img: '/gallery/img_3.png',
+  },
+  {
+    category: Category.SELF,
+    img: '/gallery/img_3.png',
+  },
+  {
+    category: Category.SELF,
     img: '/gallery/img_3.png',
   },
 ];
 
+const idMap = new Map();
+idMap.set(Category.STUDIO, 0);
+idMap.set(Category.YONSEI, 0);
+idMap.set(Category.FRIENDS, 0);
+idMap.set(Category.SELF, 0);
+
+const imgWithId = allImgs.map((value)=>{
+  const newID = idMap.get(value.category)+1;
+  idMap.set(value.category, newID);
+  return {
+    ...value,
+    id: `img_${value.category}_${newID}`,
+    isHead: newID === 1,
+  }
+});
+
+/*
 const imgs = ref(allImgs.filter((i)=>i.category===Category.STUDIO)
     .map((n)=>n.img));
-let currentCategory =  Category.STUDIO;
+
+ */
+let currentCategory =  ref(Category.STUDIO);
 const modules = [Navigation, Pagination];
 
 const changeCategory = (category: Category) => {
-  currentCategory = category;
+  // currentCategory.value = category;
+  const item = document.querySelector<HTMLImageElement>(`#img_${category}_1`);
+  const header = document.querySelector<HTMLDivElement>('#header');
+  if(item && header) {
+    const top = item.offsetTop - header.offsetHeight;
+    window.scrollTo({ top, behavior: 'smooth'});
+  }
+  /*
   imgs.value = allImgs.filter((i)=>i.category===currentCategory)
       .map((i)=>i.img);
+
+   */
 };
 
 const slider = ref(null);
@@ -138,14 +174,55 @@ const slidePrev = () => {
   slider.value.slidePrev();
   console.log(slider.value);
 }
+
+onMounted(()=>{
+  window.scrollTo({top: 0, behavior: 'instant' });
+  const items = [...document.querySelectorAll<HTMLImageElement>('img[data-is-head=true]')]
+      .sort((a, b)=>{
+        return Number(b.getAttribute('data-category')) - Number(a.getAttribute('data-category'));
+      });
+  console.log(items);
+  const header = document.querySelector<HTMLDivElement>('#header');
+  window.addEventListener('scroll', ()=> {
+    const { scrollY } = window;
+    let changed = false;
+    for(let i=0; i<items.length; i++) {
+      if(scrollY + header!.offsetHeight >= items[i].offsetTop ) {
+        currentCategory.value = Number(items[i].getAttribute('data-category'));
+        changed = true;
+        console.log('current', currentCategory);
+        break;
+      }
+    }
+    if(!changed) {
+      currentCategory.value = Category.STUDIO;
+    }
+  });
+  setTimeout(()=>{
+    const container = document.querySelector('.container');
+    container?.classList.add('show');
+  }, 200);
+});
+
+onUnmounted(()=>{
+  const container = document.querySelector('.container');
+  container?.classList.remove('show');
+})
+</script>
+
+<script lang="ts">
+export default {
+
+}
 </script>
 
 
 <template>
   <section class="container">
-    <div class="header">
+    <div class="header"
+         id="header" >
       <div class="title-container">
-        <h1 class="title">결혼사진</h1>
+        <h1 class="title">결혼 사진</h1>
         <nuxt-link class="back"
                    href="/" >
           <img src="../assets/imgs/ic_back.png"
@@ -177,13 +254,17 @@ const slidePrev = () => {
       </nav>
     </div>
     <article class="grid">
-      <img v-for="(img, idx) of imgs"
-           :src="img"
+      <img v-for="(img, idx) of imgWithId"
+           :src="img.img"
+           :id="img.id"
            @click="()=>showModal(idx)"
+           :data-category="img.category"
+           :data-is-head="img.isHead"
            alt=''
            :key="`img ${idx}`" />
     </article>
   </section>
+ <!-- 상세보기 모달 -->
   <div :class="['modal', hide&&'hide', none&&'none']"
        @click="hideModal" >
     <div class="modal-contents"
@@ -333,6 +414,14 @@ const slidePrev = () => {
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
+  transition: 450ms ease-in-out;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.container.show {
+  opacity: 1;
+  transform: none;
 }
 
 .title {
