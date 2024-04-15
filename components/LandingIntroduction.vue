@@ -7,6 +7,7 @@
       Ever After!</p>
     <article :class="['contents', imgLoad&&'on-load']">
       <div class="introduction-img-container">
+<!--
         <img v-for="(img, idx) in imgs"
              :key="`${img} ${idx}`"
              :id="`intro-img-${idx}`"
@@ -14,6 +15,10 @@
              class="introduction-img"
              :style="`opacity: ${idx===0?1:0}`"
              alt="" />
+             -->
+        <img src="/introduction/img1.png"
+             alt=''
+             class="introduction-img" />
       </div>
 
       <p class="date">2024.06.08</p>
@@ -54,6 +59,7 @@ export default {
     const timeout2 = setTimeout(()=>{
       this.imgLoad = true;
     }, 650);
+    /*
     const imgs = document.querySelectorAll<HTMLImageElement>('.introduction-img');
     let current = 0;
     let next = 1;
@@ -69,10 +75,12 @@ export default {
       imgs[current].style.opacity = '0';
       imgs[next].style.opacity = '1';
     }, 2300);
+
+     */
     return () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);
-      clearInterval(interval);
+      // clearInterval(interval);
     }
   },
   methods: {
@@ -83,9 +91,12 @@ export default {
   },
   data() {
     return {
+      /*
       imgs: ['/introduction/img2.png', '/introduction/img1.png', '/introduction/img2.png', '/introduction/img1.png',
         '/introduction/img2.png', '/introduction/img1.png',
         '/introduction/img2.png', '/introduction/img1.png'],
+
+       */
       txtLoad: false,
       imgLoad: false,
       slickOptions: {
@@ -142,7 +153,7 @@ export default {
   left: 0;
   top: 0;
   transition: opacity 400ms ease-in-out;
-  opacity: 0;
+  //opacity: 0;
 }
 
 .introduction-img-container {

@@ -20,87 +20,14 @@ enum Category {
   STUDIO, YONSEI, FRIENDS, SELF
 }
 
-const allImgs = [{
-  category: Category.STUDIO,
-  img: '/gallery/img.png',
-},
-  {
+const allImgs = Array.from({length: 17}, (_, i)=>{
+  return {
     category: Category.STUDIO,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.STUDIO,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.YONSEI,
-    img: '/gallery/img.png',
-  },
-  {
-    category: Category.YONSEI,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.YONSEI,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.YONSEI,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img_1.png',
-  },
-  {
-    category: Category.FRIENDS,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.SELF,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.SELF,
-    img: '/gallery/img_2.png',
-  },
-  {
-    category: Category.SELF,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.SELF,
-    img: '/gallery/img_3.png',
-  },
-  {
-    category: Category.SELF,
-    img: '/gallery/img_3.png',
-  },
-];
+    img: `/gallery/studio/${i+1}.jpg`
+  }
+})
+
+const imgs= allImgs.map((i)=>i.img);
 
 const idMap = new Map();
 idMap.set(Category.STUDIO, 0);
@@ -230,6 +157,7 @@ export default {
           />
         </nuxt-link>
       </div>
+<!--
       <nav class="nav">
         <button :class="['nav-item', currentCategory===Category.STUDIO&&'selected']"
                 @click="changeCategory(Category.STUDIO)"
@@ -252,6 +180,7 @@ export default {
           Self
         </button>
       </nav>
+      -->
     </div>
     <article class="grid">
       <img v-for="(img, idx) of imgWithId"
