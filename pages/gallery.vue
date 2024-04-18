@@ -20,10 +20,10 @@ enum Category {
   STUDIO, YONSEI, FRIENDS, SELF
 }
 
-const allImgs = Array.from({length: 17}, (_, i)=>{
+const allImgs = Array.from({length: 11}, (_, i)=>{
   return {
     category: Category.STUDIO,
-    img: `/gallery/studio/${i+1}.jpg`
+    img: `/gallery/studio/${i}.jpg`
   }
 })
 
@@ -99,7 +99,6 @@ const slideNext = () => {
 const slidePrev = () => {
   //@ts-ignore
   slider.value.slidePrev();
-  console.log(slider.value);
 }
 
 onMounted(()=>{
@@ -108,7 +107,6 @@ onMounted(()=>{
       .sort((a, b)=>{
         return Number(b.getAttribute('data-category')) - Number(a.getAttribute('data-category'));
       });
-  console.log(items);
   const header = document.querySelector<HTMLDivElement>('#header');
   window.addEventListener('scroll', ()=> {
     const { scrollY } = window;
@@ -117,7 +115,6 @@ onMounted(()=>{
       if(scrollY + header!.offsetHeight >= items[i].offsetTop ) {
         currentCategory.value = Number(items[i].getAttribute('data-category'));
         changed = true;
-        console.log('current', currentCategory);
         break;
       }
     }

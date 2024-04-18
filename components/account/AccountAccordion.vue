@@ -97,9 +97,9 @@ export default defineComponent({
 }
 
 .side {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 31px;
-  padding: 6px 14px;
+  padding: 4px 12px;
   text-align: left;
   border: 0.5px solid black;
   width: 100%;

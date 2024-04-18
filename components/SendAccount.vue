@@ -79,13 +79,13 @@ import AccountAccordion from "~/components/account/AccountAccordion.vue";
 .phone-header {
   display: flex;
   align-items: center;
-  column-gap: 16px;
-  font-size: 22px;
+  column-gap: 12px;
+  font-size: 20px;
   line-height: 32px;
 }
 .phone-header img {
-  width: 22px;
-  height: 22px;
+  width: 21px;
+  height: 21px;
 }
 .phone-header:nth-of-type(3) {
   margin-top: 24px;
@@ -93,9 +93,9 @@ import AccountAccordion from "~/components/account/AccountAccordion.vue";
 
 .phone-content {
   background-color: white;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 31px;
-  padding: 6px 14px;
+  padding: 4px 12px;
   border: .5px solid black;
   margin-top: 10px;
   text-align: left;

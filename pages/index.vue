@@ -142,7 +142,6 @@ export default {
     scrollDown() {
       const element = document.querySelector<HTMLDivElement>('.main-contents');
       const {scrollY} = window;
-      console.log(scrollY);
       if(element && element.offsetTop>scrollY) {
         window.scrollTo({top: element.offsetTop, behavior: 'smooth'});
       }
