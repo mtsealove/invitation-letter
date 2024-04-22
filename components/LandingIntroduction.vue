@@ -16,9 +16,10 @@
              :style="`opacity: ${idx===0?1:0}`"
              alt="" />
              -->
-        <img src="/introduction/img1.png"
-             alt=''
-             class="introduction-img" />
+        <NuxtImg src="/introduction/img1.png"
+                 preload
+                 alt=''
+                 class="introduction-img" />
       </div>
 
       <p class="date">2024.06.08</p>
@@ -41,7 +42,7 @@ export default {
   name: "LandingIntroduction",
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   setup() {
     const onSwiper = (s: any) => {

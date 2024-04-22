@@ -54,16 +54,17 @@
 <script setup lang="ts">
 useSeoMeta({
   title:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogTitle: '김은택 & 정윤영 결혼식에 초대합니다',
+  ogTitle: '2024년 6월 8일(토) 오후 1시',
   description:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogDescription: '김은택 & 정윤영 결혼식에 초대합니다',
+  ogDescription: '연세대학교 동문회관 3층 그랜드볼룸',
   ogUrl: 'https://invitation-letter-green.vercel.app',
-  ogSiteName: '김은택 & 정윤영 결혼식에 초대합니다',
+  ogSiteName: '2024년 6월 8일(토) 오후 1시',
   ogType: 'website',
-  ogImage: 'https://invitation-letter-green.vercel.app/introduction.png',
+  ogImage: 'https://invite-to-our-wedding.com/og.png',
   formatDetection: 'telephone=no',
   viewport: 'initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;'
 })
+
 </script>
 
 <script lang="ts">
@@ -76,12 +77,32 @@ import SendAccount from "~/components/SendAccount.vue";
 import WhoAmI from "~/components/WhoAmI.vue";
 import PhotoGallery from "~/components/PhotoGallery.vue";
 import DdayFooter from "~/components/DdayFooter.vue";
-import Cookie from 'js-cookie';
+import Cookie from "js-cookie";
+
+const onScroll = () => {
+  const { scrollY } = window;
+  console.log(scrollY);
+  Cookie.set('scroll', `${scrollY}`);
+}
 
 export default {
   name: "index",
+  beforeUnmount() {
+    window.removeEventListener('scroll', onScroll);
+  },
   mounted() {
     this.loadScript();
+    const scrollTop = Number(Cookie.get('scroll'));
+    if(!Number.isNaN(scrollTop)) {
+
+      console.log('scroll init', scrollTop);
+      setTimeout(()=>{
+        window.scrollTo(({top: scrollTop, behavior: 'instant'}));
+      }, 200);
+    }
+    window.addEventListener('scroll', onScroll);
+
+
     /*
     let lastOffset = 0;
     let timer: any = null;
@@ -141,7 +162,7 @@ export default {
     },
     scrollDown() {
       const element = document.querySelector<HTMLDivElement>('.main-contents');
-      const {scrollY} = window;
+      const { scrollY } = window;
       if(element && element.offsetTop>scrollY) {
         window.scrollTo({top: element.offsetTop, behavior: 'smooth'});
       }

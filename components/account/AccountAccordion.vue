@@ -10,7 +10,7 @@ export default defineComponent({
     account1: String,
     account2: String,
     account3: String,
-    id: Number
+    id: Number,
   },
   methods: {
     toggle() {

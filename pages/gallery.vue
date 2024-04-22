@@ -283,6 +283,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: none;
 }
 .modal.hide {
   opacity: 0;
@@ -400,4 +401,5 @@ export default {
   color: red !important;
   display: none !important;
 }
+
 </style>

@@ -39,9 +39,9 @@ import AccountAccordion from "~/components/account/AccountAccordion.vue";
           </div>
           <AccountAccordion type="신랑"
                             :id="1"
-                            account1="신한 110 - 000 -000 -000"
-                            account2="신한 110 - 000 -000 -000"
-                            account3="신한 110 - 000 -000 -000" />
+                            account1="카카오뱅크 3333-27-9858278"
+                            account2="농협 841-02-275843,김외진"
+                            account3="농협 841-12-418559,최영자" />
         </div>
       </div>
       <div class="phone-header">
@@ -56,9 +56,9 @@ import AccountAccordion from "~/components/account/AccountAccordion.vue";
           </div>
           <AccountAccordion type="신부"
                             :id="2"
-                            account1="신한 110 - 000 -000 -000"
-                            account2="신한 110 - 000 -000 -000"
-                            account3="신한 110 - 000 -000 -000" />
+                            account1="카카오뱅크 3333-23-4343500"
+                            account2="기업 434-004340-01018,정해만"
+                            account3="기업 381-052787-01-016,김지영" />
         </div>
       </div>
     </article>
