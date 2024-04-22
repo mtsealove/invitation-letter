@@ -12,7 +12,8 @@
     </div>
   </div>
   <div style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;">
-    <div class="container">
+    <div class="container"
+         id="background" >
       <LandingIntroduction/>
     </div>
   </div>
@@ -81,8 +82,16 @@ import Cookie from "js-cookie";
 
 const onScroll = () => {
   const { scrollY } = window;
-  console.log(scrollY);
   Cookie.set('scroll', `${scrollY}`);
+  const container = document.querySelector<HTMLDivElement>('#background');
+  if (container) {
+    const { offsetHeight } = container;
+    if(scrollY > offsetHeight) {
+      container.classList.add('hide');
+    } else {
+      container.classList.remove('hide');
+    }
+  }
 }
 
 export default {
@@ -94,8 +103,6 @@ export default {
     this.loadScript();
     const scrollTop = Number(Cookie.get('scroll'));
     if(!Number.isNaN(scrollTop)) {
-
-      console.log('scroll init', scrollTop);
       setTimeout(()=>{
         window.scrollTo(({top: scrollTop, behavior: 'instant'}));
       }, 200);
@@ -229,6 +236,10 @@ export default {
   background-color: white;
   position: absolute;
   top: 0;
+  opacity: 0;
+}
+
+.hide {
   opacity: 0;
 }
 </style>
