@@ -102,7 +102,10 @@ export default {
   mounted() {
     this.loadScript();
     const scrollTop = Number(Cookie.get('scroll'));
-    if(!Number.isNaN(scrollTop)) {
+    const enabled = Cookie.get('scrollEnabled');
+    console.log(enabled);
+    if(!Number.isNaN(scrollTop) && enabled) {
+      Cookie.remove('scrollEnabled');
       setTimeout(()=>{
         window.scrollTo(({top: scrollTop, behavior: 'instant'}));
       }, 200);
@@ -164,7 +167,7 @@ export default {
       this.$refs.modal.showModal();
     },
     closeModal() {
-      this.$refs.modalRef.closeModal();
+      // this.$refs.modalRef.closeModal();
       this.$refs.modal.closeModal();
     },
     scrollDown() {

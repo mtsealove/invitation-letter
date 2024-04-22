@@ -2,6 +2,7 @@
 import {Swiper, SwiperSlide, useSwiper} from "swiper/vue";
 import 'swiper/css';
 import {Navigation, Pagination} from "swiper/modules";
+import Cookie from 'js-cookie';
 
 useSeoMeta({
   title:"김은택 & 정윤영 결혼식에 초대합니다",
@@ -131,6 +132,7 @@ onMounted(()=>{
 onUnmounted(()=>{
   const container = document.querySelector('.container');
   container?.classList.remove('show');
+  Cookie.set('scrollEnabled', 'true');
 })
 </script>
 
