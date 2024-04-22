@@ -103,13 +103,12 @@ export default {
     this.loadScript();
     const scrollTop = Number(Cookie.get('scroll'));
     const enabled = Cookie.get('scrollEnabled');
-    console.log(enabled);
-    if(!Number.isNaN(scrollTop) && enabled) {
-      Cookie.remove('scrollEnabled');
+    if(!Number.isNaN(scrollTop) && enabled === 'true') {
       setTimeout(()=>{
         window.scrollTo(({top: scrollTop, behavior: 'instant'}));
       }, 200);
     }
+    Cookie.remove('scrollEnabled');
     window.addEventListener('scroll', onScroll);
 
 
