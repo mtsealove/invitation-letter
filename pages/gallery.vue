@@ -20,7 +20,7 @@ enum Category {
   STUDIO, YONSEI, FRIENDS, SELF
 }
 
-const allImgs = Array.from({length: 11}, (_, i)=>{
+const allImgs = Array.from({length: 16}, (_, i)=>{
   return {
     category: Category.STUDIO,
     img: `/gallery/studio/${i}.jpg`
@@ -180,14 +180,16 @@ export default {
       -->
     </div>
     <article class="grid">
-      <img v-for="(img, idx) of imgWithId"
-           :src="img.img"
-           :id="img.id"
-           @click="()=>showModal(idx)"
-           :data-category="img.category"
-           :data-is-head="img.isHead"
-           alt=''
-           :key="`img ${idx}`" />
+      <NuxtImg v-for="(img, idx) of imgWithId"
+               quality="80"
+               width="200"
+               :src="img.img"
+               :id="img.id"
+               @click="()=>showModal(idx)"
+               :data-category="img.category"
+               :data-is-head="img.isHead"
+               alt=''
+               :key="`img ${idx}`" />
     </article>
   </section>
  <!-- 상세보기 모달 -->
@@ -213,7 +215,7 @@ export default {
              class="swiper">
            <swiper-slide v-for="img in imgs"
                          :key="img" >
-             <img :src="img"
+             <NuxtImg :src="img"
                   alt=''
                   class="modal-img" />
            </swiper-slide>

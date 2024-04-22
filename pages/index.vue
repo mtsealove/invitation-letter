@@ -57,7 +57,7 @@ useSeoMeta({
   ogTitle: '2024년 6월 8일(토) 오후 1시',
   description:"김은택 & 정윤영 결혼식에 초대합니다",
   ogDescription: '연세대학교 동문회관 3층 그랜드볼룸',
-  ogUrl: 'https://invitation-letter-green.vercel.app',
+  ogUrl: 'https://invite-to-our-wedding.com',
   ogSiteName: '2024년 6월 8일(토) 오후 1시',
   ogType: 'website',
   ogImage: 'https://invite-to-our-wedding.com/og.png',
