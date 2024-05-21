@@ -41,7 +41,7 @@ import AccountAccordion from "~/components/account/AccountAccordion.vue";
                             :id="1"
                             account1="카카오뱅크 3333-27-9858278"
                             account2="농협 841-02-275843,김외진"
-                            account3="농협 841-12-418559,최영자" />
+                            account3="농협 841-12-418550,최영자" />
         </div>
       </div>
       <div class="phone-header">
