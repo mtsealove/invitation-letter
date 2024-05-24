@@ -5,14 +5,14 @@ import {Navigation, Pagination} from "swiper/modules";
 import Cookie from 'js-cookie';
 
 useSeoMeta({
-  title:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogTitle: '김은택 & 정윤영 결혼식에 초대합니다',
-  description:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogDescription: '김은택 & 정윤영 결혼식에 초대합니다',
-  ogUrl: 'https://invitation-letter-green.vercel.app',
-  ogSiteName: '김은택 & 정윤영 결혼식에 초대합니다',
+  title:"김00 & 정00 결혼식에 초대합니다",
+  ogTitle: '2024년 00월 00일(토) 오후 00시',
+  description:"김00 & 정00 결혼식에 초대합니다",
+  ogDescription: '결혼식장 주소',
+  ogUrl: 'https://invite-to-our-wedding.com',
+  ogSiteName: '2024년 00월 00일(토) 오후 00시',
   ogType: 'website',
-  ogImage: 'https://invitation-letter-green.vercel.app/introduction.png',
+  ogImage: 'https://invite-to-our-wedding.com/og.png',
   formatDetection: 'telephone=no',
   viewport: 'initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;'
 });

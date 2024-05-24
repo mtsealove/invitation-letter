@@ -24,17 +24,6 @@
       <p class="modal-content-1">결혼식에 참석해주시는<br/>
         모든 분들을 귀하게 모실 수 있도록<br/>
         참석 의사를 말씀해주세요.</p>
-<!--
-      <p class="modal-content-1">결혼식에 참석해주시는<br/>
-        모든 분들을 귀하게 모실 수 있도록<br/>
-        참석 의사를 말씀해주세요.</p>
-      <CircleDivider/>
-      <p class="modal-content-2">
-        신랑 김은택 & 신부 정윤영<br/>
-        2024년 6월 8일 토요일 오후 1시<br/>
-        연세대학교 동문회관 3층 그랜드볼룸
-      </p>
-      -->
       <button class="modal-btn"
               @click="showForm = true;">
         참석 의사 전달하기
@@ -54,12 +43,12 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogTitle: '2024년 6월 8일(토) 오후 1시',
-  description:"김은택 & 정윤영 결혼식에 초대합니다",
-  ogDescription: '연세대학교 동문회관 3층 그랜드볼룸',
+  title:"김00 & 정00 결혼식에 초대합니다",
+  ogTitle: '2024년 00월 00일(토) 오후 00시',
+  description:"김00 & 정00 결혼식에 초대합니다",
+  ogDescription: '결혼식장 주소',
   ogUrl: 'https://invite-to-our-wedding.com',
-  ogSiteName: '2024년 6월 8일(토) 오후 1시',
+  ogSiteName: '2024년 00월 00일(토) 오후 00시',
   ogType: 'website',
   ogImage: 'https://invite-to-our-wedding.com/og.png',
   formatDetection: 'telephone=no',
@@ -110,37 +99,6 @@ export default {
     }
     Cookie.remove('scrollEnabled');
     window.addEventListener('scroll', onScroll);
-
-
-    /*
-    let lastOffset = 0;
-    let timer: any = null;
-    let animated = false;
-    window.addEventListener('scroll', ()=>{
-      if(timer) {
-        return;
-      }
-      const vible = document.querySelector<HTMLDivElement>('#vible');
-      const whoAmI = document.querySelector<HTMLDivElement>('#who-am-i');
-
-      if(!animated) {
-        if(vible && window.scrollY<vible.offsetTop && window.scrollY>lastOffset) {
-          window.scrollTo({top: vible.offsetTop, behavior:'smooth'});
-          animated = true;
-        } else if(whoAmI&& window.scrollY<whoAmI.offsetTop && window.scrollY>lastOffset) {
-          window.scrollTo({top: whoAmI.offsetTop, behavior:'smooth'});
-          animated = true;
-        }
-      }
-      lastOffset = window.scrollY;
-      timer = setTimeout(()=>{
-        timer = null;
-        animated = false;
-      }, 400);
-    });
-
-     */
-
   },
   components: {
     DdayFooter,

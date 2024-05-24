@@ -47,8 +47,8 @@ export default {
     shareLink() {
       if(window.navigator.share) {
         window.navigator.share({
-          title: '김은택 & 정윤영 결혼식에 초대합니다',
-          text: '김은택 & 정윤영 결혼식에 초대합니다',
+          title: '김00 & 정00 결혼식에 초대합니다',
+          text: '김00 & 정00 결혼식에 초대합니다',
           url: 'https://invitation-letter-green.vercel.app',
         });
       }
@@ -82,7 +82,7 @@ export default {
         주소 복사하기
       </a>
     </div>
-    <p>Copyright 2024. Yunyoung Jeong. All right reserved.</p>
+    <p>Copyright 2024. 000. All right reserved.</p>
     <p>Thanks to Hash the Deverloper.</p>
   </footer>
 </template>

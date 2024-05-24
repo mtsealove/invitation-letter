@@ -45,10 +45,10 @@ export default {
            class="who-am-i">
         <div class="parent">
           <p class="who">
-            <span>김외진• 최영자</span>의 차남 <span>은택</span>
+            <span>김00• 최00</span>의 차남 <span>00</span>
           </p>
           <p class="who">
-            <span>정해만• 김지영</span>의 장녀 <span>윤영</span>
+            <span>정00• 김00</span>의 장녀 <span>00</span>
           </p>
           <CircleDivider/>
         </div>
@@ -71,8 +71,8 @@ export default {
        data-aos-offset="100"
        data-aos-easing="ease-out-cubic"
        data-aos-duration="1300">
-      2024년 6월 8일 토요일 오후 1시<br/>
-      연세대학교 동문회관 3층 그랜드볼룸</p>
+      2024년 00월 00일 0요일 오후 00시<br/>
+      서울시 어딘가 결혼식장</p>
   </section>
   <SendCome :show-modal="showModal"/>
 </template>

@@ -47,17 +47,6 @@ export default {
         window.alert('참석 인원을 입력해주세요.');
         return;
       }
-      const {error} = await supabase
-          .from('memo')
-          .insert({friend: this.friend,
-          name: this.name,
-          cnt: this.cnt,
-          meal: this.meal,
-          other: this.other});
-      if(error) {
-        console.error(error);
-        window.alert('오류가 발생하였습니다.');
-      } else {
         this.friend = FRIEND.MEN;
         this.name = '';
         this.cnt = -1;
@@ -68,7 +57,6 @@ export default {
         Cookie.set('modal', 'true', {
           expires: 1,
         });
-      }
     }
   }
 }
